@@ -41,6 +41,11 @@ async function run() {
       res.send(result)
     })
 
+    app.get('/popularCollage', async (req, res) => {
+      const result = await collageCollection.find({}).limit(3).toArray();
+      res.send(result);
+    })
+
     app.get('/collages/:id', async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) }
